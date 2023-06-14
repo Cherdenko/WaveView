@@ -1,8 +1,18 @@
 apply plugin: 'com.android.library'
-ext {
-    PUBLISH_GROUP_ID = 'com.gelitenight.waveview'
-    PUBLISH_ARTIFACT_ID = 'waveview'
-    PUBLISH_VERSION = '1.0.0-patched'
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId =  'com.gelitenight.waveview'
+            artifactId =  'waveview'
+            version = '1.0.0-patched'
+
+            pom {
+                description = 'a simple waveview'
+            }
+        }
+    }
 }
 
 android {
