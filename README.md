@@ -1,3 +1,4 @@
+[![Android CI](https://github.com/Cherdenko/WaveView/actions/workflows/android.yml/badge.svg)](https://github.com/Cherdenko/WaveView/actions/workflows/android.yml)
 This is a forked repository. Original can be found @ https://github.com/gelitenight/WaveView/
 Gradle was updated to the latest version as well as the migration to androidx for the example.
 lib is jitpack.io ready and can be included in your project like so:
