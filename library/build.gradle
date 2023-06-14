@@ -12,6 +12,7 @@ afterEvaluate {
                 version = '1.0.0-patched'
 
                 pom {
+                    packaging = 'aar'
                     description = 'a simple waveview'
                 }
 
