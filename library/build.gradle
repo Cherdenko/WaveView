@@ -2,30 +2,27 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
 }
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId =  'com.gelitenight.waveview'
-            artifactId =  'waveview'
-            version = '1.0.0-patched'
-
-            pom {
-                description = 'a simple waveview'
-            }
-
-
-        }
-    }
-}
-
-android {
+afterEvaluate {
     publishing {
-        singleVariant('release') {
-            withSourcesJar()
+        publications {
+            release(MavenPublication) {
 
+                groupId = 'com.gelitenight.waveview'
+                artifactId = 'waveview'
+                version = '1.0.0-patched'
+
+                pom {
+                    description = 'a simple waveview'
+                }
+
+
+            }
         }
     }
+
+}
+android {
+
 
     compileSdkVersion 33
     buildToolsVersion "30.0.3"
