@@ -16,6 +16,7 @@
 package com.gelitenight.waveview.library;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -26,6 +27,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
+
+
 
 public class WaveView extends View {
     /**
