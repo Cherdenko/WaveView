@@ -13,11 +13,19 @@ publishing {
             pom {
                 description = 'a simple waveview'
             }
+
+
         }
     }
 }
 
 android {
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+
+        }
+    }
 
     compileSdkVersion 33
     buildToolsVersion "30.0.3"
