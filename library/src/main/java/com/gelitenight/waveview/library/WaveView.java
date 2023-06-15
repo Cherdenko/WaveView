@@ -119,7 +119,7 @@ public class WaveView extends View {
         mWaveShiftRatio = typedArray.getFloat(R.styleable.WaveView_waveShiftRatio, DEFAULT_WAVE_SHIFT_RATIO);
         mFrontWaveColor = typedArray.getColor(R.styleable.WaveView_frontWaveColor, DEFAULT_FRONT_WAVE_COLOR);
         mBehindWaveColor = typedArray.getColor(R.styleable.WaveView_behindWaveColor, DEFAULT_BEHIND_WAVE_COLOR);
-        mShapeType = typedArray.getInt(R.styleable.WaveView_waveShape, 0) == 0 ? ShapeType.CIRCLE : ShapeType.SQUARE;
+        mShapeType = typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 0 ? ShapeType.CIRCLE : ShapeType.SQUARE;
         mShowWave = typedArray.getBoolean(R.styleable.WaveView_showWave, true);
 
         typedArray.recycle();

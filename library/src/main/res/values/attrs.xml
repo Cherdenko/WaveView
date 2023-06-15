@@ -7,7 +7,7 @@
         <attr name="waveShiftRatio" format="float" />
         <attr name="frontWaveColor" format="color" />
         <attr name="behindWaveColor" format="color" />
-        <attr name="waveShape" format="enum">
+        <attr name="customWaveShape" format="enum">
             <enum name="circle" value="0" />
             <enum name="square" value="1" />
         </attr>

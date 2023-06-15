@@ -7,19 +7,26 @@ group = 'com.github.Cherdenko'
 version = '1.0-patched'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     namespace 'com.gelitenight.waveview.library'
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
-
+    publishing {
+        multipleVariants {
+            withSourcesJar()
+            withJavadocJar()
+            allVariants()
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources false
+           // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     lint {
@@ -31,21 +38,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+
 
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.cherdenko'
-                artifactId = 'WaveView'
-                version = '1.0-patched'
-            }
-        }
-    }
-}
