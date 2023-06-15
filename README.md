@@ -3,7 +3,7 @@ This is a forked repository. Original can be found @ https://github.com/geliteni
 Gradle was updated to the latest version as well as the migration to androidx for the example.
 lib is jitpack.io ready and can be included in your project like so:
 ```
-implementation 'com.github.Cherdenko:WaveView:1.0.0-patched:sources'
+implementation 'com.github.Cherdenko:WaveView:1.0.1-patched:sources'
 ```
 Original repo hasnt been touched for 7 years. I will merge any reasonable pr's
 
@@ -16,10 +16,10 @@ A view to display wave effect.
 ## Screenshot
 ![Screenshot](screenshot.gif)
 
-## Integration
+## Integration~~
 ```
 implementation 'com.gelitenight.waveview:waveview:1.0.0'
-```
+```~~
 
 Setter methods:
  * `setWaveShiftRatio` - Shift the wave horizontally.
