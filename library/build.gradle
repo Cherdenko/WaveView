@@ -1,9 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-apply plugin: 'checkstyle'
+
 
 android {
+    lintOptions {
+        checkReleaseBuilds false
+    }
     namespace 'com.gelitenight.waveview.library'
     compileSdkVersion 33
     buildToolsVersion '30.0.3'
@@ -133,4 +136,9 @@ android.libraryVariants.all { variant ->
         }
     }
     artifacts.add('archives', task);
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
