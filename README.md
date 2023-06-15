@@ -16,10 +16,10 @@ A view to display wave effect.
 ## Screenshot
 ![Screenshot](screenshot.gif)
 
-## Integration~~
-```
+## Integration
+~~
 implementation 'com.gelitenight.waveview:waveview:1.0.0'
-```~~
+~~
 
 Setter methods:
  * `setWaveShiftRatio` - Shift the wave horizontally.
