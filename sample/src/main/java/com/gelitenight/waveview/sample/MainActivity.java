@@ -30,19 +30,18 @@ public class MainActivity extends AppCompatActivity {
         mWaveHelper = new WaveHelper(waveView);
 
         ((RadioGroup) findViewById(R.id.shapeChoice))
-                .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        if (i == R.id.shapeCircle) {
-                            waveView.setShapeType(WaveView.ShapeType.CIRCLE);
+                .setOnCheckedChangeListener((radioGroup, i) -> {
+                    if (i == R.id.shapeCircle) {
+                        waveView.setShapeType(WaveView.ShapeType.CIRCLE);
 
-                        } else if (i == R.id.shapeSquare) {
+                    } else if (i == R.id.shapeSquare) {
 
-                            waveView.setShapeType(WaveView.ShapeType.SQUARE);
-                        }
-
-
+                        waveView.setShapeType(WaveView.ShapeType.SQUARE);
+                    } else if(i == R.id.shapeHeart) {
+                        waveView.setShapeType(WaveView.ShapeType.HEART);
                     }
+
+
                 });
 
         ((SeekBar) findViewById(R.id.seekBar))

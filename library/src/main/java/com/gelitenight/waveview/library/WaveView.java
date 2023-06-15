@@ -21,9 +21,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.CornerPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Path;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
@@ -57,7 +59,8 @@ public class WaveView extends View {
 
     public enum ShapeType {
         CIRCLE,
-        SQUARE
+        SQUARE,
+        HEART
     }
 
     // if true, the shader will display the wave
@@ -119,7 +122,10 @@ public class WaveView extends View {
         mWaveShiftRatio = typedArray.getFloat(R.styleable.WaveView_waveShiftRatio, DEFAULT_WAVE_SHIFT_RATIO);
         mFrontWaveColor = typedArray.getColor(R.styleable.WaveView_frontWaveColor, DEFAULT_FRONT_WAVE_COLOR);
         mBehindWaveColor = typedArray.getColor(R.styleable.WaveView_behindWaveColor, DEFAULT_BEHIND_WAVE_COLOR);
-        mShapeType = typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 0 ? ShapeType.CIRCLE : ShapeType.SQUARE;
+         if(typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 0) mShapeType = ShapeType.CIRCLE ;
+            else if (typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 1) mShapeType = ShapeType.SQUARE;
+            else if(typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 2) mShapeType = ShapeType.HEART;
+
         mShowWave = typedArray.getBoolean(R.styleable.WaveView_showWave, true);
 
         typedArray.recycle();
@@ -204,6 +210,7 @@ public class WaveView extends View {
             mBorderPaint = new Paint();
             mBorderPaint.setAntiAlias(true);
             mBorderPaint.setStyle(Style.STROKE);
+
         }
         mBorderPaint.setColor(color);
         mBorderPaint.setStrokeWidth(width);
@@ -325,9 +332,137 @@ public class WaveView extends View {
                     canvas.drawRect(borderWidth, borderWidth, getWidth() - borderWidth,
                         getHeight() - borderWidth, mViewPaint);
                     break;
+                case HEART:
+                    mViewPaint.setStyle(Style.FILL);
+                    if(borderWidth> 0 ) {
+                        canvas.drawPath(createHeartBorderPath( getWidth(), getHeight()), mBorderPaint);
+                    }
+                    canvas.drawPath(createHeartPath(getWidth(),getHeight()),mViewPaint);
+
+
+                    break;
             }
         } else {
             mViewPaint.setShader(null);
         }
     }
+    //https://stackoverflow.com/questions/22775442/draw-a-heart-on-canvas
+    private Path createHeartPath(int width, int height) {
+        Path path = new Path();
+        //path.moveTo(0,height/3f);
+        //path.lineTo(width,height/3f);
+        //path.moveTo(width/2f,0f);
+        //path.lineTo(width/2f,height);
+
+        float pX = width/2f;
+        float pY = (height/100f)*33.33f;
+
+        float x1 = (width/100f)*50;
+        float y1 = (height/100f)*5;
+        float x2 = (width/100f)*90;
+        float y2 = (height/100f)*10;
+        float x3 = (width/100f)*90;
+        float y3 = (height/100f)*33.33f;
+
+        path.moveTo(pX,pY);
+        path.cubicTo(x1, y1, x2, y2, x3, y3);
+        path.moveTo(x3,pY);
+
+        x1 = (width/100f)*90;
+        y1 = (height/100f)*55f;
+        x2 = (width/100f)*65;
+        y2 = (height/100f)*60f;
+        x3 = (width/100f)*50;
+        y3 = (height/100f)*78f;
+
+        path.cubicTo(x1, y1, x2, y2, x3, y3);
+        path.lineTo(pX,pY);
+
+
+        x1 = (width/100f)*50;
+        y1 = (height/100f)*5;
+        x2 = (width/100f)*10;
+        y2 = (height/100f)*10;
+        x3 = (width/100f)*10;
+        y3 = (height/100f)*33.33f;
+
+        path.moveTo(pX,pY);
+        path.cubicTo(x1, y1, x2, y2, x3, y3);
+        path.moveTo(x3,pY);
+
+        x1 = (width/100f)*10;
+        y1 = (height/100f)*55f;
+        x2 = (width/100f)*35f;
+        y2 = (height/100f)*60f;
+        x3 = (width/100f)*50f;
+        y3 = (height/100f)*78f;
+
+        path.cubicTo(x1, y1, x2, y2, x3, y3);
+        path.lineTo(pX,pY);
+
+        path.moveTo(x3,y3);
+        path.close();
+
+        return path;
+    }
+
+    public Path createHeartBorderPath(int width, int height) {
+
+            Path path = new Path();
+            //path.lineTo(width/2f,height);
+
+            float pX = width/2f;
+            float pY = (height/100f)*33.33f;
+
+            float x1 = (width/100f)*50;
+            float y1 = (height/100f)*5;
+            float x2 = (width/100f)*90;
+            float y2 = (height/100f)*10;
+            float x3 = (width/100f)*90;
+            float y3 = (height/100f)*33.33f;
+
+            path.moveTo(pX,pY);
+            path.cubicTo(x1, y1, x2, y2, x3, y3);
+            path.moveTo(x3,pY);
+
+            x1 = (width/100f)*90;
+            y1 = (height/100f)*55f;
+            x2 = (width/100f)*65;
+            y2 = (height/100f)*60f;
+            x3 = (width/100f)*50 ;
+            y3 = (height/100f)*78f;
+
+            path.cubicTo(x1, y1, x2, y2, x3, y3);
+            path.moveTo(pX,pY);
+
+
+            x1 = (width/100f)*50;
+            y1 = (height/100f)*5;
+            x2 = (width/100f)*10;
+            y2 = (height/100f)*10;
+            x3 = (width/100f)*10;
+            y3 = (height/100f)*33.33f;
+
+            path.moveTo(pX,pY);
+            path.cubicTo(x1, y1, x2, y2, x3, y3);
+            path.moveTo(x3,pY);
+
+            x1 = (width/100f)*10;
+            y1 = (height/100f)*55f;
+            x2 = (width/100f)*35f;
+            y2 = (height/100f)*60f;
+            x3 = (width/100f)*50;
+            y3 = (height/100f)*78f;
+
+            path.cubicTo(x1, y1, x2, y2, x3, y3);
+            path.moveTo(pX,pY);
+
+            path.moveTo(x3,y3);
+            path.close();
+
+            return path;
+
+    }
+
+
 }

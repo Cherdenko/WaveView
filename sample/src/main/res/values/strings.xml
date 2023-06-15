@@ -12,4 +12,5 @@
     <string name="green">Green</string>
     <string name="blue">Blue</string>
     <string name="defaultColor">Default</string>
+    <string name="heart">Heart</string>
 </resources>

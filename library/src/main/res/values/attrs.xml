@@ -10,6 +10,7 @@
         <attr name="customWaveShape" format="enum">
             <enum name="circle" value="0" />
             <enum name="square" value="1" />
+            <enum name="heart" value="2"/>
         </attr>
         <attr name="showWave" format="boolean" />
     </declare-styleable>
