@@ -65,7 +65,7 @@ afterEvaluate {
 
                 groupId = 'com.gelitenight.waveview.library'
                 artifactId = 'WaveView'
-                version = '1.0.1-patched'
+                version = '1.0.2-patched'
 
                 pom {
                     name = 'Waveview'
