@@ -38,6 +38,5 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.dcendents:android-maven-gradle-plugin:2.1'
 }
 
