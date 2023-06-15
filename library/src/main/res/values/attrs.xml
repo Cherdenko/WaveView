@@ -14,4 +14,5 @@
         </attr>
         <attr name="showWave" format="boolean" />
     </declare-styleable>
+
 </resources>

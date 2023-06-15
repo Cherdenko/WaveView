@@ -15,6 +15,10 @@
  */
 package com.gelitenight.waveview.library;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -29,7 +33,11 @@ import android.graphics.Path;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class WaveView extends View {
@@ -88,7 +96,9 @@ public class WaveView extends View {
     private int mBehindWaveColor = DEFAULT_BEHIND_WAVE_COLOR;
     private int mFrontWaveColor = DEFAULT_FRONT_WAVE_COLOR;
     private ShapeType mShapeType = DEFAULT_WAVE_SHAPE;
-
+    public static List<WaveView> waveViews = new ArrayList<>();
+    private boolean mWidgetMode;
+    public static AnimatorSet mAnimatorSet;
     public WaveView(Context context) {
         super(context);
         init();
@@ -101,6 +111,7 @@ public class WaveView extends View {
 
     public WaveView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+     
         init(attrs);
     }
 
@@ -125,12 +136,13 @@ public class WaveView extends View {
          if(typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 0) mShapeType = ShapeType.CIRCLE ;
             else if (typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 1) mShapeType = ShapeType.SQUARE;
             else if(typedArray.getInt(R.styleable.WaveView_customWaveShape, 0) == 2) mShapeType = ShapeType.HEART;
-
         mShowWave = typedArray.getBoolean(R.styleable.WaveView_showWave, true);
 
         typedArray.recycle();
 
+
     }
+
 
     public float getWaveShiftRatio() {
         return mWaveShiftRatio;
